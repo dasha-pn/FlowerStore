@@ -21,19 +21,20 @@ jobs:
           java-version: '17'
           cache: maven
 
-      - name: Super Linter (Checkstyle)
+      - name: Super Linter (Checkstyle only)
         uses: super-linter/super-linter@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           STATUS_REPORTER: false
           OUTPUT_DETAILS: detailed
           LOG_LEVEL: DEBUG
-
           VALIDATE_ALL_CODEBASE: true
-          VALIDATE_JAVA: false
           VALIDATE_CHECKSTYLE: true
           CHECKSTYLE_CONFIG: .github/linters/checkstyle.xml
           FILTER_REGEX_EXCLUDE: 'src/test/java/.*'
+          VALIDATE_JAVA: false
+          VALIDATE_GOOGLE_JAVA_FORMAT: false
+          VALIDATE_CHECKOV: false
 
       - name: Build & Test (Maven)
         run: mvn -B verify

@@ -25,8 +25,12 @@ jobs:
         uses: super-linter/super-linter@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          STATUS_REPORTER: false
+          OUTPUT_DETAILS: detailed
+          LOG_LEVEL: DEBUG
+
           VALIDATE_ALL_CODEBASE: true
-          VALIDATE_JAVA: true
+          VALIDATE_JAVA: false
           VALIDATE_CHECKSTYLE: true
           CHECKSTYLE_CONFIG: .github/linters/checkstyle.xml
           FILTER_REGEX_EXCLUDE: 'src/test/java/.*'

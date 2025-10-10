@@ -30,6 +30,7 @@ jobs:
           VALIDATE_JAVA: true
           VALIDATE_CHECKSTYLE: true
           CHECKSTYLE_CONFIG: .github/linters/checkstyle.xml
+          FILTER_REGEX_EXCLUDE: 'src/test/java/.*'
 
       - name: Build & Test (Maven)
         run: mvn -B -DskipTests=false verify

@@ -41,4 +41,8 @@ public class Flower {
         }
         this.price = newPrice;
     }
+
+    public FlowerSpec getSpec() {
+        return new FlowerSpec(flowerType, color, sepalLength);
+    }
 }
